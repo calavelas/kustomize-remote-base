@@ -15,8 +15,8 @@ namePrefix: service-test-1-
 
 images:
   - name: IMAGE_REGISTRY
-    newName: my-registry/service-test-1
-    newTag: 0.0.1
+    newName: nginx
+    newTag: 1.17.8
 
 commonLabels:
   app.kubernetes.io/instance: service-test-1
