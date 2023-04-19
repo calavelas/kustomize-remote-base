@@ -4,3 +4,4 @@ metadata:
   name: app-name-config
 data:
   appName: SERVICE-A
+  appName: SERVICE-A-REGISTRY
