@@ -8,11 +8,14 @@ resources:
 #   envs:
 #   - secrets/secret.env
 #   name: partner-portal-content-secret-env
-vars:
-  - name: APP_NAME
-    objref:
-      kind: ConfigMap
-      name: app-name-config
-      apiVersion: v1
-    fieldref:
-      fieldpath: data.appName
+
+namePrefix: SERVICE-A-
+
+# vars:
+#   - name: APP_NAME
+#     objref:
+#       kind: ConfigMap
+#       name: app-name-config
+#       apiVersion: v1
+#     fieldref:
+#       fieldpath: data.appName
