@@ -2,20 +2,18 @@ apiVersion: kustomize.config.k8s.io/v1beta1
 kind: Kustomization
 resources:
 - git::ssh://git@gitdev.devops.krungthai.com:2222/idp/common/kustomize-template.git/deployment
-- git::ssh://git@gitdev.devops.krungthai.com:2222/idp/common/kustomize-template.git/service
+# - git::ssh://git@gitdev.devops.krungthai.com:2222/idp/common/kustomize-template.git/service
 # secretGenerator:
 # - behavior: merge
 #   envs:
 #   - secrets/secret.env
 #   name: partner-portal-content-secret-env
 
-namePrefix: SERVICE-A-
-
-# vars:
-#   - name: APP_NAME
-#     objref:
-#       kind: ConfigMap
-#       name: app-name-config
-#       apiVersion: v1
-#     fieldref:
-#       fieldpath: data.appName
+vars:
+  - name: APP_NAME
+    objref:
+      kind: ConfigMap
+      name: app-name-config
+      apiVersion: v1
+    fieldref:
+      fieldpath: data.appName
