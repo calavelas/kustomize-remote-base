@@ -11,8 +11,8 @@ resources:
 vars:
   - name: APP_NAME
     objref:
-      kind: Deployment
-      name: service-a
-      apiVersion: apps/v1
+      kind: ConfigMap
+      name: app-name-config
+      apiVersion: v1
     fieldref:
-      fieldpath: metadata.name
+      fieldpath: data.appName
