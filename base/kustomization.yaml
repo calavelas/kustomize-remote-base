@@ -8,3 +8,11 @@ resources:
 #   envs:
 #   - secrets/secret.env
 #   name: partner-portal-content-secret-env
+vars:
+  - name: APP_NAME
+    objref:
+      kind: Deployment
+      name: service-a
+      apiVersion: apps/v1
+    fieldref:
+      fieldpath: metadata.name
