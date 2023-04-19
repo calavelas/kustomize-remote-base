@@ -1,7 +1,0 @@
-apiVersion: v1
-kind: ConfigMap
-metadata:
-  name: app-name-config
-data:
-  appName: SERVICE-A
-  imageRegistry: SERVICE-A-REGISTRY
