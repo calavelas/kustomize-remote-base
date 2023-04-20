@@ -1,0 +1,31 @@
+apiVersion: kustomize.config.k8s.io/v1beta1
+kind: Kustomization
+resources:
+- ../../base
+
+namePrefix: service-test-1-sit-
+
+commonLabels:
+  app.kubernetes.io/instance: service-test-1
+
+images:
+- name: IMAGE_REGISTRY
+  newName: nginx
+  newTag: 1.17.8
+
+configMapGenerator:
+- name: configmap-env
+  envs:
+  - configs/config.env
+- name: configmap-file
+  files:
+  - configs/config.yaml
+  - configs/index.html
+
+secretGenerator:
+- name: secret-env
+  envs:
+  - secrets/secret.env
+- name: secret-file
+  files:
+  - secrets/secret.yaml

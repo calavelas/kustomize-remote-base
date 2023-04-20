@@ -1,46 +1,20 @@
 apiVersion: kustomize.config.k8s.io/v1beta1
 kind: Kustomization
 resources:
-- git::ssh://git@github.com/calavelas/kustomize-template.git/deployment
-
-#- git::ssh://git@gitdev.devops.krungthai.com:2222/idp/common/kustomize-template.git/service
-#- git::ssh://git@gitdev.devops.krungthai.com:2222/idp/common/kustomize-template.git/service
-# secretGenerator:
-# - behavior: merge
-#   envs:
-#   - secrets/secret.env
-#   name: partner-portal-content-secret-env
-
-namePrefix: service-test-1-
-
-images:
-  - name: IMAGE_REGISTRY
-    newName: nginx
-    newTag: 1.17.8
+- git::ssh://git@github.com/calavelas/kustomize-template.git/deployment-component/deployment
+- git::ssh://git@github.com/calavelas/kustomize-template.git/service-component/service
 
 commonLabels:
   app.kubernetes.io/instance: service-test-1
 
-configMapGenerator:
-- name: my-config-env
-  literals:
-  - VAR1=value1
-  - VAR2=value2
-
 components:
-  - git::ssh://git@github.com/calavelas/kustomize-template.git/configmap
+- git::ssh://git@github.com/calavelas/kustomize-template.git/configmap-component/configmap-env
+# - git::ssh://git@github.com/calavelas/kustomize-template.git/configmap-component/configmap-file
+- git::ssh://git@github.com/calavelas/kustomize-template.git/secret-component/secret-env
+# - git::ssh://git@github.com/calavelas/kustomize-template.git/secret-component/secret-file
 
 # patches:
 # - target:
 #     kind: Deployment
-#   patch: |-
-#     - op: replace
-#       path: /metadata/name
-#       value: service-test-1
-# - target:
-#     kind: Service
-#   patch: |-
-#     - op: replace
-#       path: /metadata/name
-#       value: service-test-1
+#   path: patches/replace-secret-mount.yaml
 
